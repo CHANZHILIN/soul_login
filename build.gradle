@@ -1,19 +1,16 @@
-apply plugin: 'com.android.library'
+apply from: "${rootProject.rootDir}/common_config.gradle"    //引用额外的配置
+if (project.ext.isSoulLoginDebug) {
+    apply plugin: 'com.android.application'  //组件开发模式，独立运行
+} else {
+    apply plugin: 'com.android.library'  //集成开发模式
+}
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.0"
-
+    project.ext.setDefaultConfig android    //调用配置信息
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -24,15 +21,28 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            if (project.ext.isSoulLoginDebug) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                resources {  //排除module下的所有文件
+                    exclude 'src/main/module/*'
+                }
+            }
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:support-annotations:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "com.android.support:appcompat-v7:${project.ext.supportVersion}"
+    implementation "com.android.support:design:${project.ext.supportVersion}"
+    implementation "com.android.support:support-annotations:${project.ext.supportVersion}"
+    implementation "com.android.support.constraint:constraint-layout:${project.ext.constraintLayoutVersion}"
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
