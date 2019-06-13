@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.soul_login">
 
-    <application>
+    <application android:name="com.kotlin_baselib.application.BaseApplication">
         <activity android:name=".LoginActivity">
         </activity>
     </application>
