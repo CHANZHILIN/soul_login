@@ -3,7 +3,8 @@
           package="com.soul_login">
 
     <application android:name="com.kotlin_baselib.application.BaseApplication">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".login.LoginActivity">
+            <activity android:name=".friends.FriendsPlannetActivity"/>
         </activity>
     </application>
 

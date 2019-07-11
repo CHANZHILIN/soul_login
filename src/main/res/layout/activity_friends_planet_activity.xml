@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".friends.FriendsPlanetActivity">
+
+    <com.soul_login.friends.planets.SoulPlanetsView
+        android:id="@+id/planetsView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:autoScrollMode="decelerate"
+        app:darkColor="@color/colorPrimaryDark"
+        app:lightColor="@color/colorPrimary"
+        app:radiusPercent="0.75"
+        app:scrollSpeed="20" />
+
+
+</android.support.constraint.ConstraintLayout>
