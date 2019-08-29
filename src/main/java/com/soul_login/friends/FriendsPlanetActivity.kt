@@ -1,7 +1,9 @@
 package com.soul_login.friends
 
+import android.os.Build
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin_baselib.api.Constants
 import com.kotlin_baselib.base.BaseActivity
@@ -24,6 +26,13 @@ import kotlinx.android.synthetic.main.activity_friends_planet_activity.*
 class FriendsPlanetActivity : BaseActivity<EmptyView, EmptyModelImpl, EmptyPresenterImpl>(), EmptyView {
     override fun createPresenter(): EmptyPresenterImpl {
         return EmptyPresenterImpl(this)
+    }
+
+    override fun preSetContentView() {
+        super.preSetContentView()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        }
     }
 
     override fun getResId(): Int {
