@@ -2,10 +2,9 @@ package com.soul_login.login
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin_baselib.api.Constants
-import com.kotlin_baselib.base.BaseActivity
-import com.kotlin_baselib.base.EmptyModelImpl
-import com.kotlin_baselib.base.EmptyPresenterImpl
-import com.kotlin_baselib.base.EmptyView
+import com.kotlin_baselib.mvvmbase.BaseActivity
+import com.kotlin_baselib.mvvmbase.BaseViewModelActivity
+import com.kotlin_baselib.mvvmbase.EmptyViewModel
 import com.soul_login.R
 
 /**
@@ -15,11 +14,9 @@ import com.soul_login.R
  *  Introduce:  登录
  **/
 @Route(path = Constants.LOGIN_ACTIVITY_PATH)
-class LoginActivity : BaseActivity<EmptyView, EmptyModelImpl, EmptyPresenterImpl>(), EmptyView {
-    override fun createPresenter(): EmptyPresenterImpl {
-        return EmptyPresenterImpl(this)
-    }
+class LoginActivity : BaseViewModelActivity<EmptyViewModel>() {
 
+    override fun providerVMClass(): Class<EmptyViewModel>? = EmptyViewModel::class.java
     override fun getResId(): Int {
         return R.layout.activity_login
     }

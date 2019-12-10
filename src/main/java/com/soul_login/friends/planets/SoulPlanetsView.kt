@@ -6,9 +6,9 @@ import android.graphics.Color
 import android.graphics.Point
 import android.os.Handler
 import android.os.Looper
-import android.support.annotation.IntDef
 import android.util.AttributeSet
 import android.view.*
+import androidx.annotation.IntDef
 import com.soul_login.R
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
@@ -19,8 +19,6 @@ import java.lang.annotation.RetentionPolicy
 class SoulPlanetsView : ViewGroup, Runnable, PlanetAdapter.OnDataSetChangeListener {
     /**
      * 设置滚动模式
-     *
-     * @param mode 滚动模式
      */
     @get:Mode
     var autoScrollMode: Int = 0
@@ -41,7 +39,7 @@ class SoulPlanetsView : ViewGroup, Runnable, PlanetAdapter.OnDataSetChangeListen
      * 是否支持手动滑动
      */
     private var manualScroll: Boolean = false
-    private var layoutParams: ViewGroup.MarginLayoutParams? = null
+    private var layoutParams: MarginLayoutParams? = null
     private var minSize: Int = 0
     private var isOnTouch = false
     private val mHandler = Handler(Looper.getMainLooper())
@@ -76,7 +74,7 @@ class SoulPlanetsView : ViewGroup, Runnable, PlanetAdapter.OnDataSetChangeListen
         }
         val wm = getContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val point = Point()
-        wm?.defaultDisplay?.getSize(point)
+        wm.defaultDisplay?.getSize(point)
         val screenWidth = point.x
         val screenHeight = point.y
         minSize = if (screenHeight < screenWidth) screenHeight else screenWidth
@@ -221,20 +219,20 @@ class SoulPlanetsView : ViewGroup, Runnable, PlanetAdapter.OnDataSetChangeListen
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val contentWidth = View.MeasureSpec.getSize(widthMeasureSpec)
-        val contentHeight = View.MeasureSpec.getSize(heightMeasureSpec)
-        val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
-        val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
+        val contentWidth = MeasureSpec.getSize(widthMeasureSpec)
+        val contentHeight = MeasureSpec.getSize(heightMeasureSpec)
+        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
+        val heightMode = MeasureSpec.getMode(heightMeasureSpec)
 
         if (layoutParams == null) {
-            layoutParams = getLayoutParams() as ViewGroup.MarginLayoutParams
+            layoutParams = getLayoutParams() as MarginLayoutParams
         }
 
-        val dimensionX = if (widthMode == View.MeasureSpec.EXACTLY) contentWidth else minSize - layoutParams!!.leftMargin - layoutParams!!.rightMargin
-        val dimensionY = if (heightMode == View.MeasureSpec.EXACTLY) contentHeight else minSize - layoutParams!!.leftMargin - layoutParams!!.rightMargin
+        val dimensionX = if (widthMode == MeasureSpec.EXACTLY) contentWidth else minSize - layoutParams!!.leftMargin - layoutParams!!.rightMargin
+        val dimensionY = if (heightMode == MeasureSpec.EXACTLY) contentHeight else minSize - layoutParams!!.leftMargin - layoutParams!!.rightMargin
         setMeasuredDimension(dimensionX, dimensionY)
 
-        measureChildren(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
+        measureChildren(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
     }
 
     /**

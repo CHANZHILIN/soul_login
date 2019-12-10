@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin_baselib.api.Constants
-import com.kotlin_baselib.base.BaseActivity
-import com.kotlin_baselib.base.EmptyModelImpl
-import com.kotlin_baselib.base.EmptyPresenterImpl
-import com.kotlin_baselib.base.EmptyView
+import com.kotlin_baselib.mvvmbase.BaseActivity
+import com.kotlin_baselib.mvvmbase.BaseViewModelActivity
+import com.kotlin_baselib.mvvmbase.EmptyViewModel
 import com.kotlin_baselib.utils.SnackbarUtil
 import com.soul_login.R
 import com.soul_login.friends.planets.SoulPlanetsView
@@ -23,10 +22,9 @@ import kotlinx.android.synthetic.main.activity_friends_planet_activity.*
  *  Introduce:  朋友星球
  **/
 @Route(path = Constants.FRIENDS_PLANNET_ACTIVITY_PATH)
-class FriendsPlanetActivity : BaseActivity<EmptyView, EmptyModelImpl, EmptyPresenterImpl>(), EmptyView {
-    override fun createPresenter(): EmptyPresenterImpl {
-        return EmptyPresenterImpl(this)
-    }
+class FriendsPlanetActivity : BaseViewModelActivity<EmptyViewModel>() {
+
+    override fun providerVMClass(): Class<EmptyViewModel>? = EmptyViewModel::class.java
 
     override fun preSetContentView() {
         super.preSetContentView()
