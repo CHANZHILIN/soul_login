@@ -2,9 +2,8 @@ package com.soul_login.login
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin_baselib.api.Constants
-import com.kotlin_baselib.mvvmbase.BaseActivity
-import com.kotlin_baselib.mvvmbase.BaseViewModelActivity
-import com.kotlin_baselib.mvvmbase.EmptyViewModel
+import com.kotlin_baselib.base.BaseViewModelActivity
+import com.kotlin_baselib.base.EmptyViewModel
 import com.soul_login.R
 
 /**
