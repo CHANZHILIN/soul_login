@@ -8,7 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.kotlin_baselib.api.Constants
 import com.kotlin_baselib.base.BaseViewModelActivity
 import com.kotlin_baselib.base.EmptyViewModel
-import com.kotlin_baselib.utils.SnackbarUtil
+import com.kotlin_baselib.utils.SnackBarUtil
 import com.soul_login.R
 import com.soul_login.friends.planets.SoulPlanetsView
 import com.soul_login.friends.planets.TestAdapter
@@ -40,7 +40,7 @@ class FriendsPlanetActivity : BaseViewModelActivity<EmptyViewModel>() {
         planetsView.setAdapter(TestAdapter())
         planetsView.setOnTagClickListener(object : SoulPlanetsView.OnTagClickListener {
             override fun onItemClick(parent: ViewGroup, view: View, position: Int) {
-                SnackbarUtil.ShortSnackbar(view, "位置" + position, SnackbarUtil.ALERT).show()
+                SnackBarUtil.shortSnackBar(view, "位置" + position, SnackBarUtil.ALERT).show()
             }
         })
     }
