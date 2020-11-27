@@ -24,13 +24,7 @@ import kotlinx.android.synthetic.main.activity_friends_planet_activity.*
 class FriendsPlanetActivity : BaseViewModelActivity<EmptyViewModel>() {
 
     override fun providerVMClass(): Class<EmptyViewModel>? = EmptyViewModel::class.java
-
-    override fun preSetContentView() {
-        super.preSetContentView()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
-    }
+    override fun isTransparentPage(): Boolean  = true
 
     override fun getResId(): Int {
         return R.layout.activity_friends_planet_activity
